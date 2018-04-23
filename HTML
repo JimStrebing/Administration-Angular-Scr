@@ -1,0 +1,15 @@
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item>Settings</button>
+  <button mat-menu-item>Help</button>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="appMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-optgroup *ngFor="let group of filteredGroups | async" [label]="group.name">
+    <mat-option *ngFor="let option of group.options" [value]="option">
+      {{ option.name }}
+    </mat-option>
+  </mat-optgroup>
+</mat-autocomplete>
